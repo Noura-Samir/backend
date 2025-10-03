@@ -32,7 +32,7 @@ app.options("*", cors());
 app.use(express.json());
 
 // Routes
-const userRoutes = require("../backend/src/routes/userProfile"); // ركوير بدل امبورت
+const userRoutes = require("../src/routes/userProfile"); // ركوير بدل امبورت
 app.use("/users", userRoutes);
 
 // مثال Route رئيسي
@@ -42,4 +42,6 @@ app.get("/", (req, res) => {
 
 // تشغيل السيرفر
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+module.exports = app;
+
