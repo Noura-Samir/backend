@@ -4,7 +4,7 @@ const connectDB = async () => {
 
   try {
     const conn = await mongoose.connect(
-      "mongodb+srv://diaake97:123456di@cluster0.4jgpj0q.mongodb.net/ecommerce?retryWrites=true&w=majority",
+      process.env.DB_URL,
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,

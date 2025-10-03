@@ -37,7 +37,7 @@ app.get("/", (req, res) => {
 });
 
 // باقي الروتات
-import userRoutes from "./routes/userRoutes.js";
+import userRoutes from "../src/routes/userProfile.js";
 app.use("/users", userRoutes);
 
 // تشغيل السيرفر
