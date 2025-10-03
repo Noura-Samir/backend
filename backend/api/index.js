@@ -32,8 +32,7 @@ app.options("*", cors());
 app.use(express.json());
 
 // Routes
-const userRoutes = require('../src/routes/userProfile');
- // ركوير بدل امبورت
+const userRoutes = require('../src/routes/userProfile'); 
 app.use("/users", userRoutes);
 
 // مثال Route رئيسي
