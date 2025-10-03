@@ -8,14 +8,14 @@ const app = express(); // <- مهم قبل أي middleware
 dotenv.config();
 
 // Connect to MongoDB
-const connectDB = require('../src/config/db.config');
+const connectDB = require('./src/config/db.config');
 connectDB();
 
 // Models
-require('../src/models/User');
-require('../src/models/Product');
-require('../src/models/Cart');
-require('../src/models/Order');
+require('./src/models/User');
+require('./src/models/Product');
+require('./src/models/Cart');
+require('./src/models/Order');
 
 // CORS
 app.use(cors({
@@ -53,13 +53,13 @@ app.use((req, res, next) => {
 });
 
 // Routes
-const authRoutes = require('../src/routes/auth');
-const productRoutes = require('../src/routes/products');
-const cartRoutes = require('../src/routes/cart');
-const checkoutRoutes = require('../src/routes/checkout');
-const orderRoutes = require('../src/routes/orders');
-const userProfileRoutes = require('../src/routes/userProfile');
-const wishlistRoutes = require('../src/routes/wishList');
+const authRoutes = require('./src/routes/auth');
+const productRoutes = require('./src/routes/products');
+const cartRoutes = require('./src/routes/cart');
+const checkoutRoutes = require('./src/routes/checkout');
+const orderRoutes = require('./src/routes/orders');
+const userProfileRoutes = require('./src/routes/userProfile');
+const wishlistRoutes = require('./src/routes/wishList');
 
 app.use('/api/users', authRoutes);
 app.use('/api/users', userProfileRoutes);
@@ -68,7 +68,7 @@ app.use('/api/products', productRoutes);
 app.use('/api/cart', cartRoutes);
 app.use('/api/checkout', checkoutRoutes);
 app.use('/api/orders', orderRoutes);
-app.use('/api/admin', require('../src/routes/admin'));
+app.use('/api/admin', require('./src/routes/admin'));
 
 // Test route
 app.get('/', (req, res) => res.send("API is running"));
