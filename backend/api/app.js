@@ -21,7 +21,7 @@ require('../src/models/Order');
 app.use(cors({
   origin: [
     "http://localhost:4200",
-    "https://frontend-6t9tqphj6-noura-samirs-projects.vercel.app"
+    "https://frontend-noura-samirs-projects.vercel.app"
   ],
   credentials: false,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
@@ -31,7 +31,7 @@ app.use(cors({
 app.options("*", cors({
   origin: [
     "http://localhost:4200",
-    "https://frontend-noura-samirs-projects.vercel.app/"
+    "https://frontend-noura-samirs-projects.vercel.app"
   ],
   credentials: true
 }));
