@@ -32,9 +32,9 @@ app.options("*", cors());
 app.use(express.json());
 
 // Routes
-const userRoutes = require('../src/routes/userProfile');
- // ركوير بدل امبورت
-app.use("/users", userRoutes);
+// const userRoutes = require('../src/routes/userProfile');
+//  // ركوير بدل امبورت
+// app.use("/users", userRoutes);
 
 // مثال Route رئيسي
 app.get("/", (req, res) => {
