@@ -18,28 +18,23 @@ require('./src/models/Cart');
 require('./src/models/Order');
 
 // CORS
+const allowedOrigins = [
+  "http://localhost:4200",
+  "https://frontend-gamma-flax-40.vercel.app" // لينك الفرونت بتاعك
+];
+
 app.use(cors({
-  origin: [
-    "http://localhost:4200",
-    "https://frontend-1s2ydzrqi-noura-samirs-projects.vercel.app"
-  ],
-  credentials: false,
+  origin:allowedOrigins,
+  credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"]
 }));
 ////////////////////
 app.options("*", cors({
-  origin: [
-    "http://localhost:4200",
-    "https://frontend-noura-samirs-projects.vercel.app"
-  ],
+  origin:allowedOrigins,
   credentials: true
 }));
-//////////
 
-app.use(cors());
-
-/////////////////////////
 // Body parser
 app.use(express.json());
 
