@@ -1,49 +1,63 @@
-const express = require("express");
-const cors = require("cors");
-const app = require("./app");
+// const express = require("express");
+// const cors = require("cors");
+// const app = require("./app");
 
-const app = express();
+// // const app = express();
 
-// السماح للفرونت إند + أي دومين للتجربة
-const allowedOrigins = [
-  "http://localhost:4200",
-  "http://localhost:3000",
-  "https://angular-node-ecommerce-frontend.vercel.app"
-];
+// // السماح للفرونت إند + أي دومين للتجربة
+// const allowedOrigins = [
+//   "http://localhost:4200",
+//   "http://localhost:3000",
+//   "https://angular-node-ecommerce-frontend.vercel.app"
+// ];
 
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true
-  })
-);
+// app.use(
+//   cors({
+//     origin: function (origin, callback) {
+//       if (!origin || allowedOrigins.includes(origin)) {
+//         callback(null, true);
+//       } else {
+//         callback(new Error("Not allowed by CORS"));
+//       }
+//     },
+//     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+//     allowedHeaders: ["Content-Type", "Authorization"],
+//     credentials: true
+//   })
+// );
 
-// معالجة preflight requests
-app.options("*", cors());
+// // معالجة preflight requests
+// app.options("*", cors());
 
-// Middlewares
-app.use(express.json());
+// // Middlewares
+// app.use(express.json());
 
-// Routes
-const userRoutes = require('../src/routes/userProfile'); 
-app.use("/users", userRoutes);
+// // Routes
+// const userRoutes = require('../src/routes/userProfile'); 
+// app.use("/users", userRoutes);
 
-// مثال Route رئيسي
-app.get("/", (req, res) => {
-  res.json({ message: "API is running with CORS enabled 🚀" });
-});
+// // مثال Route رئيسي
+// app.get("/", (req, res) => {
+//   res.json({ message: "API is running with CORS enabled 🚀" });
+// });
 
-// تشغيل السيرفر
+// // تشغيل السيرفر
+// const PORT = process.env.PORT || 5000;
+// // app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// module.exports = app;
+
+const app = require("../app");
+const dotenv = require("dotenv");
+
+dotenv.config();
+
 const PORT = process.env.PORT || 5000;
-// app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-module.exports = app;
 
+// لو محلي (localhost) نسمع بالـ listen
+if (process.env.NODE_ENV !== "production") {
+  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+}
+
+// على Vercel مش محتاج listen
+module.exports = app;
 
