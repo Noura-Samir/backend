@@ -1,5 +1,5 @@
-import express from "express";
-import cors from "cors";
+const express = require("express");
+const cors = require("cors");
 
 const app = express();
 
@@ -31,14 +31,14 @@ app.options("*", cors());
 // Middlewares
 app.use(express.json());
 
-// Routes مثال
+// Routes
+const userRoutes = require("../backend/src/routes/userProfile"); // ركوير بدل امبورت
+app.use("/users", userRoutes);
+
+// مثال Route رئيسي
 app.get("/", (req, res) => {
   res.json({ message: "API is running with CORS enabled 🚀" });
 });
-
-// باقي الروتات
-import userRoutes from "../src/routes/userProfile.js";
-app.use("/users", userRoutes);
 
 // تشغيل السيرفر
 const PORT = process.env.PORT || 5000;
